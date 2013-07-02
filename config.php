@@ -15,5 +15,4 @@ if($link == false){
 }
 mysql_select_db($db);
 
-
 ?>
