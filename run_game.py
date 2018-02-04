@@ -1,8 +1,12 @@
 import pygame
+from settings import Settings
 
 
 def run_game():
-    screen = pygame.display.set_mode((1200, 800))
+    # pygame.init() 不需要了
+    ai_settings = Settings()
+    screen = pygame.display.set_mode((ai_settings.screen_width,
+                                      ai_settings.screen_height))
     pygame.display.set_caption('我的游戏！')
 
     while True:
