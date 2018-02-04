@@ -1,5 +1,6 @@
 import pygame
 from settings import Settings
+import game_functions as gf
 
 
 def run_game():
@@ -10,8 +11,7 @@ def run_game():
     pygame.display.set_caption('我的游戏！')
 
     while True:
-        screen.fill((200, 200, 200))
-        pygame.display.flip()
+        gf.update_scrren(ai_settings)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
