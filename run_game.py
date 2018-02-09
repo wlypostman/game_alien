@@ -1,21 +1,22 @@
 import pygame
-from settings import Settings
+from pygame.sprite import Group
+
 import game_functions as gf
+from settings import Settings
+from ship import Ship
 
 
 def run_game():
-    # pygame.init() 不需要了
     ai_settings = Settings()
-    screen = pygame.display.set_mode((ai_settings.screen_width,
-                                      ai_settings.screen_height))
-    pygame.display.set_caption('我的游戏！')
-
+    screen = pygame.display.set_mode(
+        (ai_settings.screen_width, ai_settings.screen_height))
+    pygame.display.set_caption(ai_settings.caption)
+    ship = Ship(screen, ai_settings)
+    bullets = Group()
     while True:
-        gf.update_scrren(ai_settings)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                exit()
+        gf.check_event(ship)
+        bullets.update()
+        gf.update_screen(screen, ai_settings, ship)
 
 
 run_game()
